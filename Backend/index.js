@@ -34,7 +34,9 @@ app.use("/api/posts", postsRouter)
 
 app.use("/api/users", usersRouter)
 
-
+app.get("/", (req, res) => {
+    res.json({ success: true, result: "Working " })
+})
 
 
 app.use(express.static("./"))
