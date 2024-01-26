@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { backendUrl } from "../api/api";
 
 const PostItem = ({ post, user, setPosts }) => {
 	const [showComments, setShowComments] = useState(false);
@@ -35,7 +36,7 @@ const PostItem = ({ post, user, setPosts }) => {
 		<section className='postItemWrapper'>
 			<article className='postItem'>
 				<img
-					src={user?.image || "http://localhost:3000/" + post.img}
+					src={user?.image || backendUrl + "/" + post.img}
 					alt={post.title}
 				/>
 				<div>
