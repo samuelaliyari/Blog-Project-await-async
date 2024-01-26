@@ -10,7 +10,7 @@ const Admin = () => {
 		img: File,
 	});
 	useEffect(() => {
-		fetch("http://localhost:3000/api/posts")
+		fetch("https://simple-blog-1p5a.onrender.com/api/posts")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -23,7 +23,7 @@ const Admin = () => {
 		fd.append("postContent", newPost.postContent);
 		fd.append("postTitle", newPost.postTitle);
 		fd.append("postImg", newPost.img, newPost.img.name);
-		fetch("http://localhost:3000/api/posts/uploadimg", {
+		fetch("https://simple-blog-1p5a.onrender.com/api/posts/uploadimg", {
 			method: "POST",
 			body: fd,
 		})

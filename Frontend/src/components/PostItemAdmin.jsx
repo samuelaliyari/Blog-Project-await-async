@@ -1,5 +1,5 @@
 const PostItem = ({ post, user, setPosts }) => {
-	const localServer = "http://localhost:3000/";
+	const localServer = "https://simple-blog-1p5a.onrender.com/";
 
 	const deletePost = () => {
 		fetch(`${localServer}api/posts/${post.id}/delete`, { method: "DELETE" })
@@ -13,7 +13,9 @@ const PostItem = ({ post, user, setPosts }) => {
 
 	const showTags = (tag) => {
 		console.log(tag);
-		fetch(`http://localhost:3000/api/posts/query?tag=${tag}`)
+		fetch(
+			`https://simple-blog-1p5a.onrender.com/api/posts/query?tag=${tag}`,
+		)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -23,7 +25,9 @@ const PostItem = ({ post, user, setPosts }) => {
 
 	const showUsersPosts = () => {
 		console.log(user.id);
-		fetch(`http://localhost:3000/api/posts/query?userId=${user.id}`)
+		fetch(
+			`https://simple-blog-1p5a.onrender.com/api/posts/query?userId=${user.id}`,
+		)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -34,7 +38,10 @@ const PostItem = ({ post, user, setPosts }) => {
 		<section className='postItemWrapper'>
 			<article className='postItem'>
 				<img
-					src={user?.image || "http://localhost:3000/" + post.img}
+					src={
+						user?.image ||
+						"https://simple-blog-1p5a.onrender.com/" + post.img
+					}
 					alt={post.title}
 				/>
 				<div>

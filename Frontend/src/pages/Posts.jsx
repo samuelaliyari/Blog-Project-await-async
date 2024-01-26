@@ -7,7 +7,7 @@ const Posts = () => {
 	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api/posts")
+		fetch("https://simple-blog-1p5a.onrender.com/api/posts")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -16,7 +16,7 @@ const Posts = () => {
 			.then();
 	}, []);
 	useEffect(() => {
-		fetch("http://localhost:3000/api/users")
+		fetch("https://simple-blog-1p5a.onrender.com/api/users")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				console.log(users);
