@@ -39,7 +39,10 @@ const PostItem = ({ post, user, setPosts }) => {
 		<section className='postItemWrapper'>
 			<article className='postItem'>
 				<img
-					src={user?.image}
+					src={
+						user?.image ||
+						"https://simple-blog-1p5a.onrender.com/" + post.img
+					}
 					alt={post.title}
 				/>
 				<div>
