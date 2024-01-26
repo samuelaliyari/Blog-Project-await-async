@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import PostItem from "../components/PostItem";
 import Navbar from "../components/Navbar";
+import { backendUrl } from "../api/api";
 
 const Posts = () => {
 	const [posts, setPosts] = useState([]);
 	const [users, setUsers] = useState([]);
-
+	console.log(backendUrl);
 	useEffect(() => {
-		fetch("https://simple-blog-1p5a.onrender.com/api/posts")
+		fetch(backendUrl + "/api/posts")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -16,7 +17,7 @@ const Posts = () => {
 			.then();
 	}, []);
 	useEffect(() => {
-		fetch("https://simple-blog-1p5a.onrender.com/api/users")
+		fetch(backendUrl + "/api/users")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				console.log(users);

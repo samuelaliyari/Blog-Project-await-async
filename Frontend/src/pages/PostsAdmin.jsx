@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import PostItemAdmin from "../components/PostItemAdmin";
+import { backendUrl } from "../api/api";
 
 const PostsAdmin = ({ posts, setPosts }) => {
 	const [users, setUsers] = useState([]);
 	useEffect(() => {
-		fetch("https://simple-blog-1p5a.onrender.com/api/users")
+		fetch(backendUrl + "/api/users")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				console.log(users);

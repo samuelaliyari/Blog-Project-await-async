@@ -1,8 +1,8 @@
-const PostItem = ({ post, user, setPosts }) => {
-	const localServer = "https://simple-blog-1p5a.onrender.com/";
+import { backendUrl } from "../api/api";
 
+const PostItem = ({ post, user, setPosts }) => {
 	const deletePost = () => {
-		fetch(`${localServer}api/posts/${post.id}/delete`, { method: "DELETE" })
+		fetch(backendUrl + `/api/posts/${post.id}/delete`, { method: "DELETE" })
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -13,9 +13,7 @@ const PostItem = ({ post, user, setPosts }) => {
 
 	const showTags = (tag) => {
 		console.log(tag);
-		fetch(
-			`https://simple-blog-1p5a.onrender.com/api/posts/query?tag=${tag}`,
-		)
+		fetch(backendUrl + `/api/posts/query?tag=${tag}`)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -25,9 +23,7 @@ const PostItem = ({ post, user, setPosts }) => {
 
 	const showUsersPosts = () => {
 		console.log(user.id);
-		fetch(
-			`https://simple-blog-1p5a.onrender.com/api/posts/query?userId=${user.id}`,
-		)
+		fetch(backendUrl + `/api/posts/query?userId=${user.id}`)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -38,10 +34,7 @@ const PostItem = ({ post, user, setPosts }) => {
 		<section className='postItemWrapper'>
 			<article className='postItem'>
 				<img
-					src={
-						user?.image ||
-						"https://simple-blog-1p5a.onrender.com/" + post.img
-					}
+					src={user?.image || backendUrl + "/" + post.img}
 					alt={post.title}
 				/>
 				<div>

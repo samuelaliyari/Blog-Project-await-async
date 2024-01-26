@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostsAdmin from "./PostsAdmin";
 import Navbar from "../components/Navbar";
+import { backendUrl } from "../api/api";
 
 const Admin = () => {
 	const [posts, setPosts] = useState([]);
@@ -10,7 +11,7 @@ const Admin = () => {
 		img: File,
 	});
 	useEffect(() => {
-		fetch("https://simple-blog-1p5a.onrender.com/api/posts")
+		fetch(backendUrl + "/api/posts")
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -23,7 +24,7 @@ const Admin = () => {
 		fd.append("postContent", newPost.postContent);
 		fd.append("postTitle", newPost.postTitle);
 		fd.append("postImg", newPost.img, newPost.img.name);
-		fetch("https://simple-blog-1p5a.onrender.com/api/posts/uploadimg", {
+		fetch(backendUrl + "/api/posts/uploadimg", {
 			method: "POST",
 			body: fd,
 		})
