@@ -37,6 +37,10 @@ const Admin = () => {
 			.catch((err) => console.log(err));
 	};
 
+	useEffect(() => {
+		console.log(newPost);
+	}, [newPost]);
+
 	return (
 		<section className='admin'>
 			<Navbar />
