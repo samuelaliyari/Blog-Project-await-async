@@ -19,7 +19,8 @@ const Admin = () => {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-	const addpost = (e) => {
+	const addpost = () => {
+		event.preventDefault();
 		const fd = new FormData();
 		fd.append("postContent", newPost.postContent);
 		fd.append("postTitle", newPost.postTitle);
@@ -78,7 +79,7 @@ const Admin = () => {
 							setNewPost({ ...newPost, img: e.target.files[0] })
 						}
 					/>
-					<button onClick={addpost}>post</button>
+					<button onClick={() => addpost()}>post</button>
 				</form>
 			</main>
 			<PostsAdmin
