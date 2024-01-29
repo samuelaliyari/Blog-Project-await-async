@@ -11,7 +11,7 @@ const Admin = () => {
 		img: File,
 	});
 	useEffect(() => {
-		fetch(backendUrl + "/api/posts")
+		fetch(`${backendUrl}/api/posts`)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -24,7 +24,7 @@ const Admin = () => {
 		fd.append("postContent", newPost.postContent);
 		fd.append("postTitle", newPost.postTitle);
 		fd.append("postImg", newPost.img, newPost.img.name);
-		fetch(backendUrl + "/api/posts/uploadimg", {
+		fetch(`${backendUrl}/api/posts/uploadimg`, {
 			method: "POST",
 			body: fd,
 		})
@@ -32,7 +32,7 @@ const Admin = () => {
 			.then((success, result, error) => {
 				if (!success) console.log(error);
 				else setPosts(result);
-				// setTimeout(() => window.location.reload(), 200);
+				setTimeout(() => window.location.reload(), 2000);
 			})
 			.catch((err) => console.log(err));
 	};
