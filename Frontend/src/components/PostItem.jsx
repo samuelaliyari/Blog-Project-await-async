@@ -5,7 +5,7 @@ const PostItem = ({ post, user, setPosts }) => {
 	const [showComments, setShowComments] = useState(false);
 	const showUsersPosts = () => {
 		console.log(user.id);
-		fetch(`http://localhost:3000/api/posts/query?userId=${user.id}`)
+		fetch(`${backendUrl}/api/posts/query?userId=${user.id}`)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -14,7 +14,7 @@ const PostItem = ({ post, user, setPosts }) => {
 	};
 	const showTags = (tag) => {
 		console.log(tag);
-		fetch(`http://localhost:3000/api/posts/query?tag=${tag}`)
+		fetch(`${backendUrl}/api/posts/query?tag=${tag}`)
 			.then((res) => res.json())
 			.then(({ success, result, error }) => {
 				if (!success) console.log(error);
@@ -23,7 +23,7 @@ const PostItem = ({ post, user, setPosts }) => {
 	};
 
 	const addLike = (id) => {
-		fetch(`http://localhost:3000/api/posts/${id}/like`, {
+		fetch(`${backendUrl}/api/posts/${id}/like`, {
 			method: "PATCH",
 		})
 			.then((res) => res.json())
