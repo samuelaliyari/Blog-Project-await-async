@@ -33,7 +33,7 @@ const Admin = () => {
 			.then((success, result, error) => {
 				if (!success) console.log(error);
 				else setPosts(result);
-				setTimeout(() => window.location.reload(), 2000);
+				setTimeout(() => window.location.reload(), 200);
 			})
 			.catch((err) => console.log(err));
 	};
